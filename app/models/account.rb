@@ -1,3 +1,3 @@
 class Account < Sinatra::Base
-    # belongs_to :clients
+    belongs_to :clients
 end
