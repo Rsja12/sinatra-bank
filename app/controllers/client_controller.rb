@@ -1,0 +1,6 @@
+class ClientController < ApplicationController
+    
+    
+
+
+end
