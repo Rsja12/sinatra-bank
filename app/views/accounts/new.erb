@@ -1,5 +1,7 @@
 <h1>Create Account</h1>
 
-<form method="POST" action="/accounts/:id">
-    
+<form method="POST" action="/accounts">
+    Account Nickname: <input type="text" name="name">
+    Opening Balance: <input type="decimal" min="1" step="any" name="balance">
+    <input type="submit" value="submit">
 </form>

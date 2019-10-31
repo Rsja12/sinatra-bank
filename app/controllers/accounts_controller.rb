@@ -14,4 +14,13 @@ class AccountsController < ApplicationController
         erb :"/accounts/show"
     end
 
+    post '/accounts' do
+        account = Account.create(params)
+        if account
+            redirect to "/accounts/#{account.id}"
+        else
+            redirect to "/accounts/new"
+        end
+    end
+
 end
