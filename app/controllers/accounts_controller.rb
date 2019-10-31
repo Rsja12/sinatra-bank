@@ -12,10 +12,22 @@ class AccountsController < ApplicationController
    end
 
     #Edit
-   get '/accounts/:id' do 
-    @accounts = Account.all
-    @account = Account.find_by_id(params[:id])
-    erb :"/accounts/edit"
+   get '/accounts/:id/edit' do 
+        @accounts = Account.all
+        @account = Account.find_by_id(params[:id])
+        erb :"/accounts/edit"
+   end
+
+#    Edit
+   patch '/accounts/:id' do 
+    # binding.pry
+        @account = Account.find_by_id(params[:id])
+        params.delete("_method")
+        if @account.update(params)
+            redirect to "/accounts/#{@account.id}"
+        else
+            redirect to "/accounts/#{@account.id}/edit"
+        end
    end
 
 #    Read
