@@ -2,5 +2,5 @@
 <h3>Here are your accounts</h3>
 
 <% @accounts.each do |account| %>
-    <%= account.name %>
+   <a href="/accounts/ <%= account.id %>"> <%= account.name %>
 <%end%>
