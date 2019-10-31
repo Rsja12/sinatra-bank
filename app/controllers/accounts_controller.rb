@@ -20,7 +20,6 @@ class AccountsController < ApplicationController
 
 #    Edit
    patch '/accounts/:id' do 
-    # binding.pry
         @account = Account.find_by_id(params[:id])
         params.delete("_method")
         if @account.update(params)
@@ -46,6 +45,11 @@ class AccountsController < ApplicationController
         end
     end
 
-
+    # Delete
+    delete '/accounts/:id' do 
+        @account = Account.find_by_id(params[:id])
+        @account.delete
+        redirect to "/accounts"
+    end
 
 end
