@@ -18,5 +18,5 @@ class SessionsController < ApplicationController
         session.clear 
         redirect to "/login"
     end
-
+    
 end
