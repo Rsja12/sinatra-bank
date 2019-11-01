@@ -8,6 +8,8 @@ Your Balance: $<%= @account.balance %><br><br>
 
 <a href="/accounts">Back to Accounts</a><br><br><br><br><br>
 
+<a href="/accounts/<%= @account.id %>/edit">Change Account Nickname</a><br><br><br>
+
 <form method="POST" action="/accounts/<%= @account.id %>">
     <input type="hidden" id="hidden" name="_method" value="DELETE">
     <input type="submit" value="DELETE ACCOUNT">

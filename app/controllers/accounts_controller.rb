@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
    get '/accounts/:id/edit' do 
         @accounts = Account.all
         @account = Account.find_by_id(params[:id])
-        if @account.user.id == current_user.id 
+        if @account.client.id == current_user.id 
             erb :"/accounts/edit"
         else
             redirect to :"/accounts" 
@@ -45,7 +45,7 @@ class AccountsController < ApplicationController
 
     # Create
     post '/accounts' do
-        account = Account.create(params)
+        account = Account.create(name: params[:name], balance: params[:balance], client_id: current_user.id)
         if account
             redirect to "/accounts/#{account.id}"
         else
@@ -56,8 +56,12 @@ class AccountsController < ApplicationController
     # Delete
     delete '/accounts/:id' do 
         @account = Account.find_by_id(params[:id])
-        @account.delete
-        redirect to "/accounts"
+        if @account.client.id == current_user.id 
+            @account.delete
+            redirect to "/accounts"
+        else
+            redirect to "/accounts/#{account.id}"
+        end
     end
 
 end
