@@ -1,4 +1,4 @@
 class Client < ActiveRecord::Base
-    has_secure_password
     has_many :accounts
+    has_secure_password
 end

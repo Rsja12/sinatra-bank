@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
     
     # Read
-    get '/accounts' do 
+    get '/accounts' do
         @accounts = Account.all 
         erb :"/accounts/index"
     end
