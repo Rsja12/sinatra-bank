@@ -8,5 +8,5 @@ end
 
 use AccountsController
 use SessionsController
-use ClientController
+use ClientsController
 run ApplicationController
