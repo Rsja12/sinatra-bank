@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
     
     # Read
     get '/accounts' do
+        @client = Client.find_by_id(params[:id])
         if logged_in?
             @accounts = current_user.accounts.all 
             erb :"/accounts/index"
