@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191031141326) do
+ActiveRecord::Schema.define(version: 20191101151121) do
 
   create_table "accounts", force: :cascade do |t|
     t.string  "name"
-    t.decimal "balance"
+    t.float   "balance"
     t.integer "client_id"
   end
 
