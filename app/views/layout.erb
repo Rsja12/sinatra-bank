@@ -19,6 +19,9 @@
         <%= yield %>
 
       <footer class="branding">
+        <%if logged_in?%>
+          <a href="/logout">Sign Out</a>
+        <%end%>
         <small>&copy; 2019 <strong>SinatraBank</strong></small>
       </footer>
     </div>
