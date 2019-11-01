@@ -5,8 +5,8 @@ class ClientsController < ApplicationController
     end
 
     post '/clients' do 
-        @client = Client.create(params)
-        if @client 
+        @client = Client.new(params) #Why does this not work with .create method?
+        if @client.save
             session[:user_id] = @client.id
             redirect to "/accounts"
         else

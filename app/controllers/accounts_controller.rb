@@ -37,6 +37,11 @@ class AccountsController < ApplicationController
         end
    end
 
+   #EDIT
+   get '/accounts/:id/deposit' do 
+    erb :"/accounts/deposit"
+   end
+
 #    Read
     get '/accounts/:id' do 
         @account = Account.find_by_id(params[:id])
