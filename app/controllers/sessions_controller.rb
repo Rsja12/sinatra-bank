@@ -5,8 +5,13 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do 
-        @user = User.find_by(email: params[:email])
-        
+        client = Client.find_by(email: params[:email])
+        if client.authenticate(params[:password])
+            session[:user_id] = client.id 
+            redirect to "/accounts"
+        else
+            redirect to "/login"
+        end
     end
 
 end
