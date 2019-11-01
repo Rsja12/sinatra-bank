@@ -3,8 +3,8 @@
 Name: <%= @account.name %><br><br>
 Your Balance: $<%= @account.balance %><br><br>
 
-<a href="/accounts/:id/deposit">Deposit</a><br><br>
-<a href="/accounts/:id/withdrawal">Withdrawal</a><br><br><br><br>
+<a href="/accounts/<%= @account.id %>/deposit">Deposit</a><br><br>
+<%# <a href="/accounts/withdrawal">Withdrawal</a><br><br><br><br> %>
 
 <a href="/accounts">Back to Accounts</a><br><br><br><br><br>
 

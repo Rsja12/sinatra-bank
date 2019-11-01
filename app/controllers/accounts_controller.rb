@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
     # Read
     get '/accounts' do
         if logged_in?
-            @accounts = Account.all 
+            @accounts = current_user.accounts.all 
             erb :"/accounts/index"
         else
             redirect to "/login"
@@ -17,7 +17,6 @@ class AccountsController < ApplicationController
 
     #Edit
    get '/accounts/:id/edit' do 
-        @accounts = Account.all
         @account = Account.find_by_id(params[:id])
         if @account.client.id == current_user.id 
             erb :"/accounts/edit"
@@ -39,6 +38,7 @@ class AccountsController < ApplicationController
 
    #EDIT
    get '/accounts/:id/deposit' do 
+    @account = Account.find_by_id(params[:id])
     erb :"/accounts/deposit"
    end
 
