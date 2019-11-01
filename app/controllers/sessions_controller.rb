@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     post '/login' do 
         client = Client.find_by(email: params[:email])
-        if client.authenticate(params[:password])
+        if client && client.authenticate(params[:password])
             session[:user_id] = client.id 
             redirect to "/accounts"
         else

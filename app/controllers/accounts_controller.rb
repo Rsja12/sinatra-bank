@@ -2,8 +2,12 @@ class AccountsController < ApplicationController
     
     # Read
     get '/accounts' do
-        @accounts = Account.all 
-        erb :"/accounts/index"
+        if logged_in?
+            @accounts = Account.all 
+            erb :"/accounts/index"
+        else
+            redirect to "/login"
+        end
     end
 
     # Create
@@ -15,7 +19,11 @@ class AccountsController < ApplicationController
    get '/accounts/:id/edit' do 
         @accounts = Account.all
         @account = Account.find_by_id(params[:id])
-        erb :"/accounts/edit"
+        if @account.user.id == current_user.id 
+            erb :"/accounts/edit"
+        else
+            redirect to :"/accounts" 
+        end
    end
 
 #    Edit
