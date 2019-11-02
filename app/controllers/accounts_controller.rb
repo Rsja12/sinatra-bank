@@ -51,9 +51,9 @@ class AccountsController < ApplicationController
 
     # Create
     post '/accounts' do
-        account = Account.create(name: params[:name], balance: params[:balance], client_id: current_user.id)
-        if account
-            redirect to "/accounts/#{account.id}"
+        @account = Account.new(name: params[:name], balance: params[:balance], client_id: current_user.id)
+        if @account.save
+            redirect to "/accounts/#{@account.id}"
         else
             redirect to "/accounts/new"
         end
