@@ -24,6 +24,7 @@ class ApplicationController < Sinatra::Base
       @client ||= Client.find_by(id: session[:user_id])
     end
 
+
   end
 
 end
