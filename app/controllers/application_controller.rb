@@ -24,6 +24,10 @@ class ApplicationController < Sinatra::Base
       @client ||= Client.find_by(id: session[:user_id])
     end
 
+    def deposit
+      @account.balance += @account.change
+    end
+
 
   end
 
