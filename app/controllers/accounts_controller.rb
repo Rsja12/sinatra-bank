@@ -37,27 +37,29 @@ class AccountsController < ApplicationController
         end
    end
 
-   #EDIT Deposit
+
+    #Edit deposit
    get '/accounts/:id/deposit' do 
         @account = Account.find_by_id(params[:id])
-        if @account.client.id = current_user.id
+        if @account.client.id == current_user.id 
             erb :"/accounts/deposit"
         else
-            redirect to :"/accounts"
+            redirect to :"/accounts" 
         end
    end
 
-#   EDIT Deposit
-   patch '/accounts/:id' do
+#    Edit deposit
+   patch '/accounts/:id' do 
         @account = Account.find_by_id(params[:id])
         params.delete("_method")
         if @account.update(params)
             redirect to "/accounts/#{@account.id}"
         else
-            redirect to "/accounts/#{@account.id}/edit"
+            redirect to "/accounts/#{@account.id}/deposit"
         end
    end
 
+   
 #    #EDIT Withdraw
 #    get '/accounts/:id/withdrawal' do 
 #         @account = Account.find_by_id(params[:id])

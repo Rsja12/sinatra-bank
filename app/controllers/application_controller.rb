@@ -19,15 +19,14 @@ class ApplicationController < Sinatra::Base
       session[:user_id] 
     end
     
-    #Study ||= to understand this better
+    
     def current_user      
       @client ||= Client.find_by(id: session[:user_id])
     end
 
-    def deposit
-      @account.balance += @account.change
-    end
-
+    # def deposit
+    #   # @account.balance += @account.change
+    # end
 
   end
 
