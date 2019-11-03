@@ -52,7 +52,7 @@ class AccountsController < ApplicationController
         @account = Account.find_by_id(params[:id])
         params.delete("_method")
         @deposit = Account.find_by(params[:balance])
-        @account.balance += @deposit
+        # @account.balance += @deposit
         if @account.update(params)
             redirect to "/accounts/#{@account.id}"
         else
