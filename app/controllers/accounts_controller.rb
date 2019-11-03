@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
 
         @client = Client.find_by_id(params[:id])
         if logged_in?
-            @accounts = Helpers.current_user.accounts.all 
+            @accounts = current_user.accounts.all 
             erb :"/accounts/index"
         else
             redirect to "/login"
@@ -20,7 +20,7 @@ class AccountsController < ApplicationController
     #Edit Name
    get '/accounts/:id/edit' do 
         @account = Account.find_by_id(params[:id])
-        if @account.client.id == Helpers.current_user.id 
+        if @account.client.id == current_user.id 
             erb :"/accounts/edit"
         else
             redirect to :"/accounts" 
@@ -42,7 +42,7 @@ class AccountsController < ApplicationController
     #Edit deposit
    get '/accounts/:id/deposit' do 
         @account = Account.find_by_id(params[:id])
-        if @account.client.id == Helpers.current_user.id 
+        if @account.client.id == current_user.id 
             erb :"/accounts/deposit"
         else
             redirect to :"/accounts" 
@@ -101,7 +101,7 @@ class AccountsController < ApplicationController
     # Delete
     delete '/accounts/:id' do 
         @account = Account.find_by_id(params[:id])
-        if @account.client.id == Helpers.current_user.id 
+        if @account.client.id == current_user.id 
             @account.delete
             redirect to "/accounts"
         else
