@@ -13,21 +13,4 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  helpers do 
-
-    def logged_in?
-      session[:user_id] 
-    end
-    
-    
-    def current_user      
-      @client ||= Client.find_by(id: session[:user_id])
-    end
-
-    # def deposit
-    #   # @account.balance += @account.change
-    # end
-
-  end
-
 end
