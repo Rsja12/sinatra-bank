@@ -58,26 +58,26 @@ class AccountsController < ApplicationController
         end
    end
 
-   #EDIT Withdraw
-   get '/accounts/:id/withdrawal' do 
-        @account = Account.find_by_id(params[:id])
-        if @account.client.id = current_user.id
-            erb :"/accounts/withdrawal"
-        else
-            redirect to :"/accounts"
-        end
-   end
+#    #EDIT Withdraw
+#    get '/accounts/:id/withdrawal' do 
+#         @account = Account.find_by_id(params[:id])
+#         if @account.client.id = current_user.id
+#             erb :"/accounts/withdrawal"
+#         else
+#             redirect to :"/accounts"
+#         end
+#    end
 
-#   EDIT Withdraw
-   patch '/accounts/:id' do
-        @account = Account.find_by_id(params[:id])
-        params.delete("_method")
-        if @account.update(params)
-            redirect to "/accounts/#{@account.id}"
-        else
-            redirect to "/accounts/#{@account.id}/edit"
-        end
-   end
+# #   EDIT Withdraw
+#    patch '/accounts/:id' do
+#         @account = Account.find_by_id(params[:id])
+#         params.delete("_method")
+#         if @account.update(params)
+#             redirect to "/accounts/#{@account.id}"
+#         else
+#             redirect to "/accounts/#{@account.id}/edit"
+#         end
+#    end
 
 #    Read
     get '/accounts/:id' do 
