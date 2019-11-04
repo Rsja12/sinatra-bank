@@ -18,7 +18,6 @@ class ApplicationController < Sinatra::Base
       session[:user_id] 
     end
     
-    
     def current_user      
       @client ||= Client.find_by(id: session[:user_id])
     end

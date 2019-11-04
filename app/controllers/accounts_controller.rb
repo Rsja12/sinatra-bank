@@ -2,7 +2,6 @@ class AccountsController < ApplicationController
     
     # Read
     get '/accounts' do
-
         @client = Client.find_by_id(params[:id])
         if logged_in?
             @accounts = current_user.accounts.all 
@@ -39,26 +38,26 @@ class AccountsController < ApplicationController
    end
 
 
-    #Edit deposit
-   get '/accounts/:id/deposit' do 
-        @account = Account.find_by_id(params[:id])
-        if @account.client.id == current_user.id 
-            erb :"/accounts/deposit"
-        else
-            redirect to :"/accounts" 
-        end
-   end
+#     #Edit deposit
+#    get '/accounts/:id/deposit' do 
+#         @account = Account.find_by_id(params[:id])
+#         if @account.client.id == current_user.id 
+#             erb :"/accounts/deposit"
+#         else
+#             redirect to :"/accounts" 
+#         end
+#    end
 
-#    Edit deposit
-   patch '/accounts/:id' do 
-        @account = Account.find_by_id(params[:id])
-        params.delete("_method")
-        if @account.update(params)
-            redirect to "/accounts/#{@account.id}"
-        else
-            redirect to "/accounts/#{@account.id}/deposit"
-        end
-   end
+# #    Edit deposit
+#    patch '/accounts/:id' do 
+#         @account = Account.find_by_id(params[:id])
+#         params.delete("_method")
+#         if @account.update(params)
+#             redirect to "/accounts/#{@account.id}"
+#         else
+#             redirect to "/accounts/#{@account.id}/deposit"
+#         end
+#    end
 
    
 #    #EDIT Withdraw
