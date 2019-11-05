@@ -2,8 +2,8 @@ class AccountsController < ApplicationController
     
     # Read
     get '/accounts' do
-        @client = Client.find_by_id(params[:id])
-        if logged_in?
+        # @client = Client.find_by_id(params[:id])
+        if logged_in? 
             @accounts = current_user.accounts.all 
             erb :"/accounts/index"
         else
@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
         erb :"/accounts/new"
    end
 
-    #Edit Name
+    #Edit 
    get '/accounts/:id/edit' do 
         @account = Account.find_by_id(params[:id])
         if @account.client.id == current_user.id 
@@ -26,16 +26,20 @@ class AccountsController < ApplicationController
         end
    end
 
-#    Edit Name
+#    Edit 
    patch '/accounts/:id' do 
         @account = Account.find_by_id(params[:id])
         params.delete("_method")
+        # @account.update(params) ? redirect "/accounts/#{@account.id}" : redirect "/accounts/#{@account.id}/edit"
         if @account.update(params)
             redirect to "/accounts/#{@account.id}"
         else
             redirect to "/accounts/#{@account.id}/edit"
         end
    end
+
+
+
 
 
 #     #Edit deposit
@@ -80,6 +84,9 @@ class AccountsController < ApplicationController
 #             redirect to "/accounts/#{@account.id}/edit"
 #         end
 #    end
+
+
+
 
 #    Read
     get '/accounts/:id' do 
