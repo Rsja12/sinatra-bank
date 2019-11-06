@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
             session[:user_id] = @client.id
             redirect to "/accounts/new"
         else
-            redirect to "/clients/signup"
+            redirect to "/"
         end
     end
 

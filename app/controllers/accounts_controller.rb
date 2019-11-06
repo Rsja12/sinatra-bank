@@ -2,7 +2,6 @@ class AccountsController < ApplicationController
     
     # Read
     get '/accounts' do
-        # @client = Client.find_by_id(params[:id])
         if logged_in? 
             @accounts = current_user.accounts.all 
             erb :"/accounts/index"
@@ -37,6 +36,63 @@ class AccountsController < ApplicationController
             redirect to "/accounts/#{@account.id}/edit"
         end
    end
+
+   #    Read
+   get '/accounts/:id' do 
+        @account = Account.find_by_id(params[:id])
+        erb :"/accounts/show"
+    end
+
+    # Create
+    post '/accounts' do
+        account = Account.new(name: params[:name], balance: params[:balance], client_id: current_user.id)
+        if account.save
+            redirect to "/accounts/#{account.id}"
+        else
+            redirect to "/accounts"
+        end
+    end
+    
+    # Delete
+    delete '/accounts/:id' do 
+        @account = Account.find_by_id(params[:id])
+        if @account.client.id == current_user.id 
+            @account.delete
+            redirect to "/accounts"
+        else
+            redirect to "/accounts/#{account.id}"
+        end
+    end
+    
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -88,31 +144,67 @@ class AccountsController < ApplicationController
 
 
 
-#    Read
-    get '/accounts/:id' do 
-        @account = Account.find_by_id(params[:id])
-        erb :"/accounts/show"
-    end
 
-    # Create
-    post '/accounts' do
-        account = Account.new(name: params[:name], balance: params[:balance], client_id: current_user.id)
-        if account.save
-            redirect to "/accounts/#{account.id}"
-        else
-            redirect to "/accounts"
-        end
-    end
 
-    # Delete
-    delete '/accounts/:id' do 
-        @account = Account.find_by_id(params[:id])
-        if @account.client.id == current_user.id 
-            @account.delete
-            redirect to "/accounts"
-        else
-            redirect to "/accounts/#{account.id}"
-        end
-    end
 
-end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
